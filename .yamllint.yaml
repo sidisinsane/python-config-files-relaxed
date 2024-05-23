@@ -1,0 +1,46 @@
+extends: default
+
+yaml-files:
+  - "*.yaml"
+  - "*.yml"
+
+ignore:
+  - .hatch
+  - .mypy_cache
+  - .pytest_cache
+  - .ruff_cache
+
+rules:
+  braces:
+    forbid: true
+    level: warning
+  brackets:
+    forbid: true
+    level: warning
+    ignore:
+      - .github/workflows/*.yml
+  comments-indentation:
+    level: warning
+  document-end:
+    present: false
+    level: warning
+  document-start:
+    present: false
+    level: warning
+  indentation:
+    spaces: 2
+  line-length:
+    level: warning
+    ignore:
+      - .github/workflows/*.yml
+  new-line-at-end-of-file: enable
+  new-lines:
+    type: unix
+  quoted-strings:
+    quote-type: single
+    required: only-when-needed
+  trailing-spaces:
+    level: warning
+  truthy:
+    ignore:
+      - .github/workflows/*.yml

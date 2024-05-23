@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "esbenp.prettier-vscode",
+    "charliermarsh.ruff",
+    "microsoft/vscode-mypy",
+    "nwgh.bandit",
+    "DavidAnson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml"
+  ],
+  "unwantedRecommendations": []
+}

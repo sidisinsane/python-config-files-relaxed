@@ -1,0 +1,48 @@
+default: true
+
+extends: null
+
+MD003:
+  style: atx
+MD004:
+  style: dash
+MD009:
+  br_spaces: 2
+  list_item_empty_lines: true
+  strict: false
+MD010:
+  code_blocks: true
+  spaces_per_tab: 2
+MD013:
+  code_block_line_length: 80
+  code_blocks: true
+  heading_line_length: 80
+  headings: true
+  line_length: 80
+  stern: false
+  strict: false
+  tables: false
+MD024:
+  allow_different_nesting: true
+  siblings_only: true
+MD033: false
+MD034: false
+MD035:
+  style: ---
+MD041: false
+MD043: false
+MD046:
+  style: fenced
+MD048:
+  style: backtick
+MD049:
+  style: asterisk
+MD050:
+  style: asterisk
+MD054:
+  autolink: false
+  collapsed: false
+  full: true
+  inline: true
+  shortcut: true
+  url_inline: true

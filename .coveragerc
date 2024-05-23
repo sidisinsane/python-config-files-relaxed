@@ -1,0 +1,19 @@
+[paths]
+source = src
+
+[run]
+branch = true
+parallel = true
+source = tests
+
+[report]
+show_missing = true
+precision = 2
+; skip_empty = true
+; ignore_errors = true
+
+[html]
+directory = reports/html
+
+[xml]
+output = reports/coverage.xml

@@ -1,0 +1,77 @@
+# This configuration focuses on the most critical security issues while
+# avoiding false positives and unnecessary noise, making it suitable for
+# a pragmatic approach in smaller projects or during rapid prototyping.
+
+# List of plugins to run. By default, Bandit runs all the plugins.
+# You can specify a subset of plugins if needed.
+plugins:
+  - blacklist_calls
+  - blacklist_imports
+  - binding_to_all_interfaces
+  - exec_used
+  - hardcoded_bind_all_interfaces
+  - hardcoded_password_string
+  - hardcoded_password_funcarg
+  - hardcoded_tmp_directory
+  - hashlib_insecure_hash_functions
+  - request_with_no_cert_validation
+  - sql_statements
+  - subprocess_popen_with_shell_equals_true
+  - yaml_load
+
+# Exclude certain directories from scanning
+exclude_dirs:
+  - tests
+  - venv
+  - .hatch
+  - .venv
+  - .tox
+  - .git
+  - __pycache__
+
+# Specify the output format. By default, Bandit uses text format.
+output_format: txt
+
+# List of files to exclude from scanning. Use glob patterns.
+exclude:
+  - tests/*
+  - examples/*
+  - docs/*
+
+# List of tests to skip (use Bandit test IDs)
+skips:
+  - B101 # Skip assert statements used
+  - B311 # Skip random usage
+  - B312 # Skip telnetlib usage
+  - B404 # Skip import of insecure hashlib functions
+
+# Custom configuration for individual plugins
+plugin_config:
+  blacklist_calls:
+    bad_name_sets:
+      - [eval, exec, execfile, compile]
+      - [input, raw_input]
+      - [open, file, openfile]
+  blacklist_imports:
+    bad_import_sets:
+      - [telnetlib, ftplib, pickle, cPickle, subprocess, crypt, pwd]
+  hardcoded_tmp_directory:
+    tmp_dirs:
+      - /tmp
+      - /var/tmp
+      - /dev/shm
+
+# Severity level of issues to be reported (LOW, MEDIUM, HIGH)
+severity_level: LOW
+
+# Confidence level of issues to be reported (LOW, MEDIUM, HIGH)
+confidence_level: MEDIUM
+
+# Maximum number of lines in a file to be scanned (useful to skip large files)
+max_lines: 1000
+
+# Enable recursive scanning
+recursive: true
+
+# Verbosity level of the output (0 - minimal, 1 - default, 2 - verbose)
+verbosity: 1

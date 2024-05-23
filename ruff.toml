@@ -1,0 +1,71 @@
+# This configuration file aims to align with  
+# the "Google Python Style Guide" while adhering to "PEP 257" for docstrings.
+
+# Allow imports relative to the "src" and "test" directories.
+src = ["src", "tests"]
+
+# List file patterns to exclude from formatting and linting.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hatch",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pycache__",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "dist",
+    "node_modules",
+    "venv"
+]
+
+[lint]
+select = [
+    "A",    # pyflakes rules (for catching bugs)
+    "B",    # pycodestyle rules (for PEP 8 compliance)
+    "C",    # McCabe complexity checker
+    "E",    # pycodestyle error codes
+    "F",    # pyflakes error codes
+    "I",    # import order (Google style requires specific import order)
+    "N",    # PEP 257 docstring style
+    "D",    # pydocstyle error codes (for PEP 257 compliance)
+    "PG",   # Google-specific rules
+]
+
+ignore = [
+    "E121", "E123", "E126", "E226", "E24", "E704",  # Google style allows certain whitespace around operators
+    "W503", "W504",  # Line break before binary operator
+]
+
+max-complexity = 10
+line-length = 80
+import-order-style = "google"
+
+[lint.pydocstyle]
+convention = "pep257"
+
+[lint.mccabe]
+complexity = 10
+
+[lint.isort]
+profile = "google"
+
+[lint.flake8]
+extend-ignore = [
+    "E203",  # Whitespace before ':'
+]
+
+[lint.per-file-ignores]
+"tests/test_*.py" = ["D", "G"]  # Example: Ignore specific checks for test files

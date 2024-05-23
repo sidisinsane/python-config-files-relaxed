@@ -1,0 +1,12 @@
+{
+  "plugins": ["prettier-plugin-sort-json"],
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "options": {
+        "tabWidth": 4,
+        "jsonSortOrder": "caseInsensitiveLexical"
+      }
+    }
+  ]
+}
