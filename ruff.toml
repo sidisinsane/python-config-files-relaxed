@@ -48,6 +48,7 @@ select = [
 ]
 
 ignore = [
+    "F401",     # unused-import
     "E501",     # line-too-long: Up PEP 8 limit of 79 chars to default (Black) of 88 chars instead.
     "D100",     # undocumented-public-module: Too restrictive.
     "D101",     # undocumented-public-class: Too restrictive.
