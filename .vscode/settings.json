@@ -2,7 +2,7 @@
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
-    "source.fixAll.markdownlint": true
+    "source.fixAll.markdownlint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
@@ -18,7 +18,7 @@
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.indent": 12,
   "workbench.tree.renderIndentGuides": "always",
-  "python.defaultInterpreterPath": "${workspaceFolder}/.hatch/your-project-name/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.hatch/my-project-name/bin/python",
   "python.terminal.activateEnvironment": true,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"

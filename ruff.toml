@@ -1,10 +1,5 @@
-# This configuration file aims to align with  
-# the "Google Python Style Guide" while adhering to "PEP 257" for docstrings.
+target-version = "py311"
 
-# Allow imports relative to the "src" and "test" directories.
-src = ["src", "tests"]
-
-# List file patterns to exclude from formatting and linting.
 exclude = [
     ".bzr",
     ".direnv",
@@ -22,6 +17,8 @@ exclude = [
     ".svn",
     ".tox",
     ".venv",
+    "__about__.py",
+    "__init__.py",
     "__pycache__",
     "__pypackages__",
     "_build",
@@ -32,40 +29,54 @@ exclude = [
 ]
 
 [lint]
+# @see: https://docs.astral.sh/ruff/rules/
 select = [
-    "A",    # pyflakes rules (for catching bugs)
-    "B",    # pycodestyle rules (for PEP 8 compliance)
-    "C",    # McCabe complexity checker
-    "E",    # pycodestyle error codes
-    "F",    # pyflakes error codes
-    "I",    # import order (Google style requires specific import order)
-    "N",    # PEP 257 docstring style
-    "D",    # pydocstyle error codes (for PEP 257 compliance)
-    "PG",   # Google-specific rules
+    "F",        # Pyflakes
+    "E",        # pycodestyle errors
+    "W",        # pycodestyle warnings
+    "I",        # isort
+    "D",        # pydocstyle
+    "UP",       # pyupgrade
+    "B",        # flake8-bugbear
+    "C4",       # flake8-comprehensions
+    "PT",       # flake8-pytest-style
+    "Q",        # flake8-quotes
+    "SIM",      # flake8-simplify
+    "TID",      # flake8-tidy-imports
+    "TCH",      # flake8-type-checking
+    "RUF",      # Ruff-specific rules
 ]
 
 ignore = [
-    "E121", "E123", "E126", "E226", "E24", "E704",  # Google style allows certain whitespace around operators
-    "W503", "W504",  # Line break before binary operator
+    "E501",     # line-too-long: Up PEP 8 limit of 79 chars to default (Black) of 88 chars instead.
+    "D100",     # undocumented-public-module: Too restrictive.
+    "D101",     # undocumented-public-class: Too restrictive.
+    "D102",     # undocumented-public-method: Too restrictive.
+    "D103",     # undocumented-public-function: Too restrictive.
+    "D104",     # undocumented-public-package: Too restrictive.
+    "D105",     # undocumented-magic-method: Too restrictive.
+    "D106",     # undocumented-public-nested-class: Too restrictive.
+    "D107",     # undocumented-public-init: Too restrictive.
+    "PT011",    # pytest-raises-too-broad: Would imply updating tests after each exception message update.
+    "SIM102"    # collapsible-if: Too restrictive.
 ]
 
-max-complexity = 10
-line-length = 80
-import-order-style = "google"
 
 [lint.pydocstyle]
-convention = "pep257"
+convention = "pep257" # @see: https://peps.python.org/pep-0257/
 
-[lint.mccabe]
-complexity = 10
+[lint.pycodestyle]
+max-doc-length = 88 # Use the Black convention.
 
-[lint.isort]
-profile = "google"
+[lint.flake8-tidy-imports]
+ban-relative-imports = "all" # Disallow all relative imports.
 
-[lint.flake8]
-extend-ignore = [
-    "E203",  # Whitespace before ':'
-]
+[lint.flake8-type-checking]
+strict = true
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]
+# Pydantic needs to be able to evaluate types at runtime.
+# @see https://docs.astral.sh/ruff/settings/#lint_flake8-type-checking_runtime-evaluated-base-classes
+# @see https://pypi.org/project/flake8-type-checking/
 
 [lint.per-file-ignores]
-"tests/test_*.py" = ["D", "G"]  # Example: Ignore specific checks for test files
+"tests/**/*.py" = ["D1"] # undocumented-...: Allow missing docstrings for tests.

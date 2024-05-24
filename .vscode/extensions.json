@@ -3,7 +3,7 @@
     "ms-python.python",
     "esbenp.prettier-vscode",
     "charliermarsh.ruff",
-    "microsoft/vscode-mypy",
+    "ms-python.mypy-type-checker",
     "nwgh.bandit",
     "DavidAnson.vscode-markdownlint",
     "redhat.vscode-yaml",
